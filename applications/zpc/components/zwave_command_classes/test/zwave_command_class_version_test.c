@@ -290,6 +290,12 @@ void test_on_nif_attribute_update()
     }
   }
 
+  attribute_resolver_register_rule_ExpectAndReturn(
+    ZWAVE_CC_VERSION_ATTRIBUTE(COMMAND_CLASS_BASIC),
+    NULL,
+    version_cc_get,
+    SL_STATUS_OK);
+
   // Fill up the NIF, version is not found yet:
   attribute_store_set_reported(test_nif_node,
                                test_nif_content,
@@ -346,6 +352,13 @@ void test_on_nif_attribute_update()
         SL_STATUS_OK);
     }
   }
+
+  attribute_resolver_register_rule_ExpectAndReturn(
+    ZWAVE_CC_VERSION_ATTRIBUTE(COMMAND_CLASS_BASIC),
+    NULL,
+    version_cc_get,
+    SL_STATUS_OK);
+
   // Set the content of our Secure NIF
   attribute_store_set_reported(test_secure_nif_node,
                                test_secure_nif_content,

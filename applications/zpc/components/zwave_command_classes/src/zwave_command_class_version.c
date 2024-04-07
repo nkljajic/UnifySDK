@@ -238,6 +238,10 @@ static void zwave_command_class_version_create_cc_version_attributes(
                                                           nif_length,
                                                           endpoint_node);
   }
+
+  // COMMAND_CLASS_BASIC may be supported, but not included in the NIF
+  add_command_class_version_attributes(COMMAND_CLASS_BASIC, endpoint_node);
+
 }
 
 /**
